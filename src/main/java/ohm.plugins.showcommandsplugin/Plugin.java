@@ -20,7 +20,7 @@ public class Plugin extends JavaPlugin implements Listener {
   public void onCommandSent(PlayerCommandPreprocessEvent event) {
     List<Player> players = new ArrayList<>(Bukkit.getOnlinePlayers());
     for(int i = 0; i < players.size(); i++){
-      players.get(i).sendMessage("Event executed");
+      players.get(i).sendMessage(event.getPlayer().getName() + " tried to execute the command " + event.getMessage());
     }
   }
 
