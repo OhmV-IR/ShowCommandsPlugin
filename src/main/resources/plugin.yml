@@ -1,0 +1,7 @@
+name: ShowCommandsPlugin
+version: 0.1.0
+main: ohm.plugins.showcommandsplugin.Plugin
+description: Make all commands executed visible to everyone on the server instead of just server operators
+author: Ohm
+website: https://github.com/OhmV-IR
+api-version: '1.20'
