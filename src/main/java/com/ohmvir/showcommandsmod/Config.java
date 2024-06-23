@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.ohmvir.showcommandsmod;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;

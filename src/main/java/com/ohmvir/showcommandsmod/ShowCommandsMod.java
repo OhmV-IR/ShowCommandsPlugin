@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.ohmvir.showcommandsmod;
 
 import com.mojang.brigadier.ParseResults;
 import com.mojang.logging.LogUtils;
