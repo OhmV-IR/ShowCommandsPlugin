@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.mojang.brigadier.ParseResults;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -8,6 +9,7 @@ import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraft.commands.CommandSourceStack;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -37,11 +39,27 @@ public class ShowCommandsMod
     public void onServerStarting(ServerStartingEvent event)
     {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("Show commands server mod started successfully!");
     }
     @SubscribeEvent
-    public void onCommandReceived(CommandEvent event){
+    public void onCommandReceived(CommandEvent cmd){
+        try{
         LOGGER.info("received command");
-        LOGGER.info(event.toString());
+        ParseResults<CommandSourceStack> results = cmd.getParseResults();
+        LOGGER.info("Player " + CommandSourceToPlayerName(results.getContext().getSource().source.toString()) + 
+        " executed " + ClassNameToCommandName(results.getContext().getCommand().getClass().getSimpleName()) + 
+        " with " + "x" + " arguments");
+        }
+        catch(Exception e){
+
+        }
+    }
+    private String ClassNameToCommandName(String className){
+        String[] dividedStr = className.split("\\$");
+        return dividedStr[0];
+    }
+    private String CommandSourceToPlayerName(String source){
+        String[] dividedStr = source.split("['']");
+        return dividedStr[1];
     }
 }
