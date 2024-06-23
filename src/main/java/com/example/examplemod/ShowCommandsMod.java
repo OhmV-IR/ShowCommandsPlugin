@@ -53,29 +53,24 @@ public class ShowCommandsMod {
             LOGGER.info("received command");
             ParseResults<CommandSourceStack> results = cmd.getParseResults();
             String playerName = CommandSourceToPlayerName(results.getContext().getSource().source.toString());
-            String commandName = ClassNameToCommandName(results.getContext().getCommand().getClass().getSimpleName());
-            LOGGER.info("Player " + playerName + " executed " + commandName+ " with " + "x" + " arguments");
+            LOGGER.info(results.getContext().getSource().source.toString());
+            String command = "/" + results.getReader().getString();
+            LOGGER.info("Player " + playerName + " executed " + command);
             PlayerList plist = SERVER.getPlayerList();
             for (ServerPlayer player : plist.getPlayers()) {
-                player.sendSystemMessage(Component.literal("Player " + playerName + " executed " + commandName+ " with " + "x" + " arguments"));
+                player.sendSystemMessage(Component.literal(
+                        "Player " + playerName + " executed " + command));
             }
         } catch (Exception e) {
             LOGGER.error(e.toString());
         }
 
     }
-
-    private String ClassNameToCommandName(String className) {
-        String[] dividedStr = className.split("\\$");
-        return dividedStr[0];
-    }
-
     private String CommandSourceToPlayerName(String source) {
         String[] dividedStr = source.split("['']");
-        try{
-        return dividedStr[1];
-        }
-        catch(Exception e){
+        try {
+            return dividedStr[1];
+        } catch (Exception e) {
             return dividedStr[0];
         }
     }
