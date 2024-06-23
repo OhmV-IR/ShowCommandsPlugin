@@ -1,4 +1,6 @@
 # eclipse
+myserver/
+.vscode/
 bin
 *.launch
 .settings
@@ -12,14 +14,12 @@ out
 *.iws
 *.iml
 .idea
-myserver/
 
 # gradle
 build
 .gradle
 
 # other
-.vscode/
 eclipse
 run
 
