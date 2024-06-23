@@ -50,10 +50,8 @@ public class ShowCommandsMod {
     @SubscribeEvent
     public void onCommandReceived(CommandEvent cmd) {
         try {
-            LOGGER.info("received command");
             ParseResults<CommandSourceStack> results = cmd.getParseResults();
             String playerName = CommandSourceToPlayerName(results.getContext().getSource().source.toString());
-            LOGGER.info(results.getContext().getSource().source.toString());
             String command = "/" + results.getReader().getString();
             LOGGER.info("Player " + playerName + " executed " + command);
             PlayerList plist = SERVER.getPlayerList();
@@ -64,14 +62,14 @@ public class ShowCommandsMod {
         } catch (Exception e) {
             LOGGER.error(e.toString());
         }
-
     }
+
     private String CommandSourceToPlayerName(String source) {
-        String[] dividedStr = source.split("['']");
-        try {
+        if (source.contains("net.minecraft.server.dedicated.DedicatedServer")) {
+            return "Server";
+        } else {
+            String[] dividedStr = source.split("['']");
             return dividedStr[1];
-        } catch (Exception e) {
-            return dividedStr[0];
         }
     }
 }
