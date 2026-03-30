@@ -8,6 +8,7 @@ build/
 **/build/
 *.swp
 *~
+output/
 # Eclipse
 .classpath
 .project
