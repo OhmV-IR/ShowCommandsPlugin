@@ -24,7 +24,7 @@ pipeline {
 				steps {
 					script {
 						if(isUnix()){
-							sh "chmod +x ./gradlew
+							sh "chmod +x ./gradlew"
 							sh "./gradlew build"
 						} else {
 							bat "./gradlew.bat build"
