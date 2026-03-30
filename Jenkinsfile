@@ -37,10 +37,10 @@ pipeline {
 					script {
 						if(isUnix()){
 							sh "mkdir -p output"
-							sh "cp build/libs/ShowCommandsPlugin.java output/ShowCommandsPlugin-jvm-${JDK_VERSION}.jar"
+							sh "cp build/libs/ShowCommandsPlugin.jar output/ShowCommandsPlugin-jvm-${JDK_VERSION}.jar"
 						} else {
 							bat "if not exist output mkdir output"
-							bat "copy build\\libs\\ShowCommandsPlugin.java output\\ShowCommandsPlugin-jvm-${JDK_VERSION}.jar"
+							bat "copy build\\libs\\ShowCommandsPlugin.jar output\\ShowCommandsPlugin-jvm-${JDK_VERSION}.jar"
 						}
 					}
 					archiveArtifacts artifacts: "output/ShowCommandsPlugin-jvm-${JDK_VERSION}.jar", fingerprint: true
