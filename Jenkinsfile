@@ -1,6 +1,7 @@
 pipeline {
     agent none
     stages {
+	stage("Build plugin"){
 	matrix {
 		axes {
 			axis {
@@ -45,6 +46,7 @@ pipeline {
 				}
 			}
 		}
+}
 	}
 	}
 }
